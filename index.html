@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><!-- EDIT: your name -->Martyna Chmura<!-- /EDIT --> — AI Governance Analyst</title>
+<meta name="description" content="AI governance analyst and consultant working across regulation, compliance and geopolitics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f5f5f5;
+    --panel: #ede9e9;
+    --ink: #1d1e2c;
+    --accent: #4c86ab;        /* lighter blue, used for text/links on light bg */
+    --accent-bright: #7fa4c4; /* the lighter blue at full brightness — dark bg + decorative fills */
+    --line: rgba(29,30,44,0.14);
+    --sidebar-w: 300px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    font-family:'Urbanist', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-weight:400;
+    line-height:1.6;
+  }
+
+  a{ color: var(--accent); text-decoration:none; border-bottom:1px solid transparent; }
+  a:hover{ border-bottom-color: var(--accent); }
+
+  h1,h2,h3{ font-family:'Urbanist', sans-serif; margin:0; }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    position: fixed;
+    top:0; left:0; bottom:0;
+    width: var(--sidebar-w);
+    background: var(--ink);
+    color: var(--panel);
+    padding: 48px 36px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow-y:auto;
+  }
+
+  .sidebar .id h1{
+    font-size: 1.9rem;
+    font-weight:800;
+    color:#fff;
+    letter-spacing:-0.01em;
+  }
+  .sidebar .id p.role{
+    margin-top:8px;
+    font-size:0.98rem;
+    font-weight:400;
+    color: var(--accent-bright);
+  }
+
+  .sidebar nav{ margin-top:44px; }
+  .sidebar nav a{
+    display:block;
+    color: var(--panel);
+    font-size:0.95rem;
+    font-weight:500;
+    padding:7px 0;
+    border-bottom:none;
+    opacity:0.85;
+  }
+  .sidebar nav a:hover{ opacity:1; color:#fff; }
+
+  .sidebar .contact{
+    font-size:0.88rem;
+    color: var(--panel);
+    opacity:0.75;
+  }
+  .sidebar .contact a{ color: var(--accent-bright); display:block; margin-top:6px; }
+  .sidebar .contact .label{
+    font-size:0.78rem;
+    color: var(--panel);
+    opacity:0.55;
+    margin-top:22px;
+  }
+  .sidebar .contact .label:first-child{ margin-top:0; }
+
+  /* ---------- Main content ---------- */
+  main{
+    margin-left: var(--sidebar-w);
+    max-width: 780px;
+    padding: 64px 56px 100px 59px;
+  }
+
+  section{ padding: 46px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+
+  .rule{
+    width:28px; height:3px;
+    background: var(--accent-bright);
+    margin-bottom:14px;
+  }
+
+  section h2{
+    font-size:1.55rem;
+    font-weight:700;
+    margin-bottom:18px;
+  }
+
+  .hero{ padding-top:0; border-bottom:none; }
+  .hero p.statement{
+    font-size: clamp(1.5rem, 3vw, 2.15rem);
+    font-weight:600;
+    line-height:1.35;
+    max-width: 640px;
+  }
+  .hero p.statement .muted{ color: var(--accent); }
+
+  .lede{
+    font-size:1.02rem;
+    font-weight:400;
+    max-width: 640px;
+    color: var(--ink);
+  }
+  .lede + .lede{ margin-top:16px; }
+
+  /* Quick links, sitting right under About */
+  .quicklinks{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 22px;
+    margin-top:26px;
+  }
+  .quicklinks a{ font-weight:600; font-size:0.95rem; }
+
+  /* Timeline (experience) */
+  .entry{
+    display:grid;
+    grid-template-columns: 170px 1fr;
+    gap: 20px;
+    padding: 24px 0;
+    border-top:1px solid var(--line);
+  }
+  .entry:first-of-type{ border-top:none; padding-top:0; }
+
+  .entry .when{
+    font-size:0.85rem;
+    color: var(--ink);
+    opacity:0.65;
+    font-weight:600;
+    padding-top:2px;
+  }
+  .dot{
+    display:inline-block;
+    width:6px; height:6px;
+    background: var(--accent-bright);
+    margin-right:7px;
+    vertical-align:middle;
+  }
+  .entry .where{
+    display:block;
+    font-size:0.8rem;
+    opacity:0.75;
+    font-weight:400;
+    margin-top:4px;
+    margin-left:13px;
+  }
+  .entry h3{
+    font-size:1.08rem;
+    font-weight:700;
+    margin-bottom:2px;
+  }
+  .entry .org{
+    font-size:0.95rem;
+    font-weight:500;
+    color: var(--ink);
+    opacity:0.75;
+    margin-bottom:10px;
+  }
+  .entry p{ margin:0; font-size:0.98rem; max-width: 560px; }
+
+  /* Projects — fold-out accordion */
+  .accordion-item{
+    border-top:1px solid var(--line);
+    padding: 20px 0;
+  }
+  .accordion-item:first-of-type{ border-top:none; padding-top:0; }
+  .accordion-item summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+  }
+  .accordion-item summary::-webkit-details-marker{ display:none; }
+  .accordion-item summary::marker{ content:""; }
+  .summary-text .tag{
+    display:block;
+    font-size:0.8rem;
+    font-weight:700;
+    color: var(--accent);
+    margin-bottom:4px;
+  }
+  .summary-text h3{ font-size:1.08rem; font-weight:700; }
+  .accordion-item .plus{
+    flex-shrink:0;
+    font-size:1.5rem;
+    line-height:1;
+    font-weight:400;
+    color: var(--accent-bright);
+    transition: transform 0.2s ease;
+  }
+  .accordion-item[open] .plus{ transform: rotate(45deg); }
+  .accordion-body{
+    padding-top:16px;
+    max-width:600px;
+  }
+  .accordion-body p{ font-size:0.96rem; margin:0 0 12px 0; }
+  .accordion-body .resources-label{
+    display:block;
+    font-size:0.78rem;
+    font-weight:700;
+    color: var(--accent);
+    margin: 14px 0 8px 0;
+  }
+  .accordion-body .resources a{
+    display:block;
+    font-size:0.92rem;
+    margin-bottom:6px;
+    font-weight:600;
+  }
+
+  /* BISI publications — simple link list, no frames */
+  .pub{
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .pub:first-of-type{ border-top:none; padding-top:0; }
+  .pub a{ font-size:1rem; font-weight:600; }
+  .pub .meta{
+    display:block;
+    font-size:0.82rem;
+    opacity:0.6;
+    margin-top:4px;
+  }
+
+  /* Leadership & training */
+  .leadtrain-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+  }
+  .lt-col h3{
+    font-size:0.9rem;
+    font-weight:700;
+    color: var(--accent);
+    margin-bottom:16px;
+  }
+  .lt-entry{
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .lt-entry:first-child{ border-top:none; padding-top:0; }
+  .lt-entry .lt-title{ font-weight:700; font-size:0.98rem; }
+  .lt-entry .lt-org{ font-size:0.86rem; opacity:0.7; margin:2px 0 4px 0; }
+  .lt-entry .lt-when{ font-size:0.78rem; opacity:0.55; font-weight:600; }
+  .lt-entry p{ font-size:0.9rem; margin:8px 0 0 0; }
+
+  /* Education */
+  .edu{ padding:20px 0; border-top:1px solid var(--line); }
+  .edu:first-of-type{ border-top:none; padding-top:0; }
+  .edu h3{ font-size:1.08rem; font-weight:700; }
+  .edu .org{ font-weight:500; opacity:0.75; margin:2px 0 12px 0; }
+  .edu ul{ margin:0; padding-left:18px; }
+  .edu li{ margin-bottom:6px; font-size:0.96rem; }
+
+  /* Skills */
+  .skills-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 34px;
+  }
+  .skills-grid h3{
+    font-size:0.95rem;
+    font-weight:700;
+    margin-bottom:12px;
+  }
+  .skill-group{ margin-bottom:16px; }
+  .skill-group:last-child{ margin-bottom:0; }
+  .skill-group .group-label{
+    display:block;
+    font-size:0.78rem;
+    font-weight:700;
+    color: var(--accent);
+    margin-bottom:6px;
+  }
+  .skill-group p{ font-size:0.92rem; margin:0; opacity:0.9; }
+
+  /* Skills */
+.skills-columns{
+  display:grid;
+  grid-template-columns: 1.1fr 1.1fr 1fr 1fr;
+  gap: 32px;
+}
+.skills-col h3{
+  font-size:0.76rem;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color: var(--accent);
+  padding-bottom:12px;
+  margin-bottom:16px;
+  border-bottom:1px solid var(--line);
+}
+.tag-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.tag-pill{
+  border:1px solid var(--line);
+  border-radius:7px;
+  padding:8px 14px;
+  font-size:0.88rem;
+  color: var(--ink);
+  background:transparent;
+  white-space:nowrap;
+}
+.skills-note{
+  margin-top:18px;
+  font-size:0.92rem;
+  line-height:1.6;
+  opacity:0.9;
+}
+.skills-note strong{ font-weight:700; opacity:1; color:var(--ink); }
+
+/* Languages — plain CEFR list, no visual meter */
+.lang-list{ padding-top:0; }
+.lang-row{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  align-items:baseline;
+  gap:20px;
+  padding:11px 0;
+  border-top:1px solid var(--line);
+  font-size:0.95rem;
+}
+.lang-row:first-child{ border-top:none; }
+.lang-row .lang-name{ font-weight:500; }
+.lang-row .lang-level{
+  font-family:'Courier New', Courier, monospace;
+  font-size:0.85rem;
+  opacity:0.7;
+  .skills-columns{ grid-template-columns: 1fr; gap:32px; }
+}
+
+
+  /* Contact */
+  .contact-block p{ font-size:1rem; max-width:520px; }
+  .contact-block .links{ margin-top:18px; }
+  .contact-block .links a{
+    display:inline-block;
+    margin-right:24px;
+    font-weight:600;
+    font-size:0.98rem;
+  }
+
+  footer{
+    margin-left: var(--sidebar-w);
+    padding: 28px 56px 56px 56px;
+    font-size:0.82rem;
+    color: var(--ink);
+    opacity:0.5;
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 860px){
+    .sidebar{
+      position:static;
+      width:100%;
+      flex-direction:column;
+      padding: 28px 24px;
+    }
+    .sidebar nav{
+      margin-top:24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 4px 18px;
+    }
+    .sidebar nav a{ padding:4px 0; }
+    .sidebar .contact{ margin-top:28px; }
+    main{ margin-left:0; padding: 40px 24px 70px 24px; }
+    footer{ margin-left:0; padding: 24px 24px 40px 24px; }
+    .entry{ grid-template-columns: 1fr; gap:6px; }
+    .entry .where{ margin-left:0; }
+    .skills-grid{ grid-template-columns: 1fr; gap:24px; }
+    .leadtrain-grid{ grid-template-columns: 1fr; gap:36px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div>
+    <div class="id">
+      <!-- EDIT: your name -->
+      <h1>Martyna Chmura</h1>
+      <!-- EDIT: one-line role/tagline -->
+      <p class="role">AI Governance Analyst &amp; Consultant</p>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Selected projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#Volunteer Experience">Volunteer Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <div class="contact">
+    <div class="label">Based in</div>
+    <div>Paris</div>
+
+    <div class="label">Elsewhere</div>
+    <!-- EDIT: replace these with your real links -->
+    <a href="https://www.linkedin.com/in/martyna-chmura/">LinkedIn</a>
+    <a href="mailto:martyna.chmura@gmail.com">Email</a>
+    <a href="https://drive.google.com/file/d/1QUSdD36tA_VZfA6ZKDXggEV9P8rvbpap/view?usp=sharing" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+  </div>
+</div>
+
+<main>
+
+  <section class="hero" id="top">
+    <p class="statement">
+      <!-- EDIT: your hero statement -->
+      I translate AI regulation into <span class="muted">decisions organizations can act on</span> and study the governance and geopolitics that shape it.
+    </p>
+  </section>
+
+  <section id="about">
+    <div class="rule"></div>
+    <h2>About</h2>
+    <p class="lede">
+    I work in AI governance and regulatory compliance, helping organizations navigate a fast-moving legal landscape across the EU, US, and Asia. My interest sits at the intersection of digital policy and geopolitics, focusing on how public and private actors cooperate to build technology that serves people while preserving fundamental rights and sovereignty. </p>    
+    <p class="lede">
+    My background moved from a broad foundation in political science at Leiden University to applied digital public policy at Sciences Po, and now to hands-on AI governance and compliance work. Along the way I've gained experience across consulting, think tanks, national administrations, and intergovernmental organizations, which gave me a truly multidisciplinary, international outlook on how regulation actually gets implemented. </p>
+    <p class="lede">
+    I believe that governance and compliance work delivers the most value when it feeds back into how policy itself is shaped, where implementation realities inform the decisions made upstream. AI's transformative potential and its risks need to be addressed together, not traded off, and that principle continues to orient my work: staying close to policy design, and building governance that holds up in practice.</p>    
+    <div class="quicklinks">
+      <!-- EDIT: replace with your real links -->
+      <a href="mailto:martyna.chmura@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/martyna-chmura/">LinkedIn</a>
+      <a href="https://drive.google.com/file/d/1QUSdD36tA_VZfA6ZKDXggEV9P8rvbpap/view?usp=sharing" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="rule"></div>
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="when"><span class="dot"></span>Jan 2026 – Present
+        <span class="where">Paris</span>
+      </div>
+      <div>
+        <h3>Regulatory Consultant</h3>
+        <div class="org">Naaia</div>
+      <p>I translate AI regulation into operational compliance guidance for clients, monitoring developments across the EU, US, and Asia — including the EU AI Act, Korea's Basic AI Act, and emerging US and Chinese frameworks — and analyzing their implications for risk classification, conformity assessment, and governance strategy. I also produce AI governance and literacy content, from memos to training modules and podcasts, and contribute to the Appia consortium's work on conformity assessment standards. Alongside this, I helped build an internal AI agent that automates part of the regulatory monitoring.</p>    </div>
+      </div>
+
+    <div class="entry">
+      <div class="when"><span class="dot"></span>Oct 2025 – Present
+        <span class="where">London, remote</span>
+      </div>
+      <div>
+        <h3>Tech Analyst</h3>
+        <div class="org">Bloomsbury Intelligence and Security Institute (BISI)</div>
+        <p>I follow how developments in AI, technology, and cybersecurity intersect with geopolitics and European policy, then turn that research into bi-weekly policy briefs and reports on AI governance, tech sovereignty, and digital regulation.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when"><span class="dot"></span>Mar 2025 – Dec 2025
+        <span class="where">Salzburg, remote</span>
+      </div>
+      <div>
+        <h3>Research Assistant</h3>
+        <div class="org">University of Salzburg — INCONEX </div>
+        <p>I supported Dr. Lucy Kinski's ERC-funded INCONEX project on political representation in EU parliaments, running literature reviews and coding parliamentary speech data that feeds into a machine-learning model.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when"><span class="dot"></span>Sep 2025 – Nov 2025
+        <span class="where">Paris</span>
+      </div>
+      <div>
+        <h3>Intern, Political-Economic Department</h3>
+        <div class="org">Permanent Representation of Poland to the OECD</div>
+        <p>I followed OECD committee meetings and working groups on digital technology, trade and social policy for the Polish delegation, preparing briefing notes and co-authoring analytical papers and policy briefs, while helping coordinate events that promoted Poland's priorities at the OECD.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when"><span class="dot"></span>Jan 2025 – May 2025
+        <span class="where">Paris</span>
+      </div>
+      <div>
+        <h3>Public Policy Project Consultant</h3>
+        <div class="org">CNIL — Sciences Po Public Policy Incubator</div>
+        <p>Working with the CNIL through Sciences Po's Public Policy Incubator, I examined how algorithmic decision-making in public services holds up against GDPR Article 22 and AI Act Article 86. The project followed a full policy design process: framing the problem, interviewing France Travail's national directors and frontline advisors to understand their needs and constraints on the ground, and translating those findings into an interactive workshop on algorithmic literacy and accountability.</p>      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when"><span class="dot"></span>Sep 2022 – Aug 2024
+        <span class="where">Brussels, remote</span>
+      </div>
+      <div>
+        <h3>Administrative Officer</h3>
+        <div class="org">Institute for a Greater Europe</div>
+        <p>I led recruitment and onboarding for over 70 new members across four campaigns, growing the organization's membership by 40%, while managing its day-to-day HR and administrative operations for a pan-European, youth-led think tank.</p>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when"><span class="dot"></span>Jan – Feb 2023
+        <span class="where">Rabat</span>
+      </div>
+      <div>
+        <h3>Intern</h3>
+        <div class="org">Embassy of the Republic of Poland in Rabat</div>
+        <p>Interning at the Embassy of Poland in Rabat, I monitored and translated Moroccan political and economic developments for embassy reporting, researched Polish-Moroccan relations, and took part in diplomatic meetings on human rights and EU neighborhood policy.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="education">
+    <div class="rule"></div>
+    <h2>Education</h2>
+
+    <div class="edu">
+      <!-- EDIT: confirm program name and dates -->
+      <h3>Master's in Digital, New Technology and Public Policy</h3>
+      <p class="org">Sciences Po, Paris</p>
+      <ul>
+        <li>Graduated <em>cum laude.</em></li>
+        <li><em>Grand Oral</em> examination on the compatibility of innovation and fundamental rights protection under the EU AI Act.</li>
+        <li>Relevant Coursework: Comparative Digital Law, Policy Analysis, Digital Economics, EU Interest Representation, Law of Platforms.</li> 
+      </ul>
+    </div>
+
+    <div class="edu">
+      <!-- EDIT: confirm dates -->
+      <h3>Bachelor's Political Science</h3>
+      <p class="org">Leiden University</p>
+      <ul>
+        <li>Graduated <em>cum laude.</em> Specialization in International Relations and Organisations.</li>
+        <li>Completed the Honours College Science &amp; Society track, on the interdisciplinary study of socio-technical systems.</li>
+        <li>Relevant Coursework: Politics of the EU, International Political Economy, International Law, Global security, Statistics. </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="rule"></div>
+    <h2>Selected projects</h2>
+
+    <details class="accordion-item">
+      <summary>
+        <div class="summary-text">
+          <span class="tag">Sociology of Digital Spaces</span>
+          <h3>The Politicization of Brat Summer</h3>
+        </div>
+        <span class="plus">+</span>
+      </summary>
+      <div class="accordion-body">
+        <p>An examination of how "brat summer" became a politicized internet phenomenon, combining large-scale Python-based analysis of online discourse with qualitative content analysis. The report traces how an aesthetic trend was appropriated across political communication, and what that reveals about the sociology of digital public spaces.</p>
+        <span class="resources-label">Links and resources</span>
+        <div class="resources">
+          <a href="https://docs.google.com/document/d/15e8fB-T7yr-u1n6tyWJ2uz0EQUlWdjoH-_DRSmQWElA/edit?usp=sharing" target="_blank" rel="noopener">Read the report →</a>
+          <a href="https://docs.google.com/presentation/d/1HiUYxpx30p99FuERS2UUp_MCA97tSMpPgu1bBRuD_HE/edit?usp=sharing" target="_blank" rel="noopener">View the presentation →</a>
+          <a href="https://github.com/pouvoirdasha/sociology_scrapping" target="_blank" rel="noopener">View the code →</a>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary>
+        <div class="summary-text">
+          <span class="tag">Decoding Biases in AI</span>
+          <h3>Exploring Biases in AI Driven Resume Matcher</h3>
+        </div>
+        <span class="plus">+</span>
+      </summary>
+      <div class="accordion-body">
+        <p>An investigation into bias in AI-powered hiring algorithms, applying machine learning theory in Python to evaluate algorithmic fairness in automated recruitment systems. The project looked at how training data and model design choices can reproduce or amplify discriminatory outcomes in candidate screening, and what that means for how such systems should be regulated and audited.</p>
+        <span class="resources-label">Links and resources</span>
+        <div class="resources">
+          <a href="https://drive.google.com/file/d/1Sd05uZpnOoIAl4G6CGNPH5AATqqZkAj8/view?usp=sharing" target="_blank" rel="noopener">Read the paper →</a>
+          <a href="https://github.com/pouvoirdasha/Decoding_Biases_in_Resume_Matcher" target="_blank" rel="noopener">View the code →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary>
+        <div class="summary-text">
+          <span class="tag">Research paper on transliteration algorithms</span>
+          <h3>Data and Algorithms for Public Policy</h3>
+        </div>
+        <span class="plus">+</span>
+      </summary>
+      <div class="accordion-body">
+        <p>A UK-Germany comparative study of algorithmic name transliteration and duplicate matching in asylum and migration databases, reverse-engineering how these systems work and proposing governance recommendations for transparency and accountability.</p>
+        <span class="resources-label">Links and resources</span>
+        <div class="resources">
+          <a href="https://drive.google.com/file/d/1Sd05uZpnOoIAl4G6CGNPH5AATqqZkAj8/view?usp=sharing" target="_blank" rel="noopener">Read the paper →</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="accordion-item">
+      <summary>
+        <div class="summary-text">
+          <span class="tag">Responsible Use of Decision-Making Algorithms in the Public Sector</span>
+          <h3>Child Alert System: Risk Scoring Children in Chile</h3>
+        </div>
+        <span class="plus">+</span>
+      </summary>
+      <div class="accordion-body">
+        <p>This report uses Chile's SAN system as a case study in public sector algorithmic governance, examining its design, deployment, and impacts to draw lessons for more responsible algorithmic decision-making in government. It concludes with policy recommendations for future automated decision-making tools.</p>
+        <span class="resources-label">Links and resources</span>
+        <div class="resources">
+          <!-- EDIT: add real links if you have the paper hosted somewhere -->
+          <a href="https://drive.google.com/file/d/1pBnmzqaE48yhox7KEvctEivz5dhcTbUH/view?usp=sharing" target="_blank" rel="noopener">Read the paper →</a>
+        </div>
+      </div>
+    </details>
+
+  </section>
+
+  <section id="publications">
+    <div class="rule"></div>
+    <h2>Publications</h2>
+
+    <div class="pub">
+      <a href="https://bisi.org.uk/reports/european-tech-sovereignty-and-the-security-risks-of-decoupling" target="_blank" rel="noopener">European Tech Sovereignty and the Security Risks of Decoupling ↗</a>
+      <span class="meta">Bloomsbury Intelligence and Security Institute</span>
+    </div>
+
+    <div class="pub">
+      <a href="https://bisi.org.uk/reports/from-vision-to-practice-the-eus-cloud-sovereignty-framework" target="_blank" rel="noopener">From Vision to Practice: The EU's Cloud Sovereignty Framework ↗</a>
+      <span class="meta">Bloomsbury Intelligence and Security Institute</span>
+    </div>
+
+    <div class="pub">
+      <a href="https://bisi.org.uk/reports/ai-and-synthetic-biology-the-new-frontier-of-promise-and-power" target="_blank" rel="noopener">AI and Synthetic Biology: The New Frontier of Promise and Power ↗</a>
+      <span class="meta">Bloomsbury Intelligence and Security Institute</span>
+    </div>
+
+      <div class="pub">
+      <a href="https://bisi.org.uk/reports/the-eus-age-verification-efforts-child-protection-privacy-and-digital-identity" target="_blank" rel="noopener">The EU's Age Verification Efforts: Child Protection, Privacy, and Digital Identity ↗</a>
+      <span class="meta">Bloomsbury Intelligence and Security Institute</span>
+    </div>
+
+      <div class="pub">
+      <a href="https://bisi.org.uk/reports/us-ai-framework-and-the-politics-of-deregulation" target="_blank" rel="noopener">US AI Framework and the Politics of Deregulation ↗</a>
+      <span class="meta">Bloomsbury Intelligence and Security Institute</span>
+    </div>
+
+
+  </section>
+
+  
+
+<section id="Volunteer Experience">
+    <div class="rule"></div>
+    <h2>Volunteer Experience</h2>
+
+        <div class="lt-entry">
+          <div class="lt-title">Communications Officer</div>
+          <!-- EDIT: confirm association name and dates -->
+          <div class="lt-org">Student Association of Political Scientists, Sciences Po</div>
+          <div class="lt-when">Jan 2025 - July 2025 </div>
+          <p>Managed the monthly newsletter, from content writing to distribution. Designed engaging content on Canvafor various platforms.</p>
+        </div>
+
+        <div class="lt-entry">
+          <!-- EDIT: confirm the organization's name and your exact role title -->
+          <div class="lt-title">Social Media Manager</div>
+          <div class="lt-org">REadCYCLE</div>
+          <div class="lt-when">Sep 2023 - June 2024 </div>
+          <p>Contributed to fundraising for education initiatives while promoting sustainability, strengthening a sense of social responsibility alongside creative and communications work.</p>
+        </div>
+
+        <div class="lt-entry">
+            <div class="lt-title">Committee Secretary</div>
+            <!-- EDIT: confirm association name and dates -->
+            <div class="lt-org">Student Association of Political Scientists, Sciences Po</div>
+            <div class="lt-when">Sep 2022 - June 2023 </div>
+            <p>Led a 40-student association at the intersection of political science and international affairs, coordinating collaborations with international organizations and political officials.</p>
+          </div>
+
+          <div class="lt-entry">
+            <div class="lt-title">Volunteer</div>
+            <!-- EDIT: confirm association name and dates -->
+            <div class="lt-org">Sans Oublier le Sourire</div>
+            <div class="lt-when">Oct 2023 </div>
+            <p>Collaborated with the SOS team to support the planning, coordination, and execution of the “Vieillir comme tout le monde” event to foster social inclusion of people with intellectual disabilities.</p>
+          </div>
+
+      </div>
+  </section>
+
+  <section id="skills">
+    <div class="rule"></div>
+    <h2>Skills</h2>
+
+    <div class="skills-columns">
+
+  <div class="skills-col">
+    <h3>Research &amp; policy</h3>
+    <div class="tag-row">
+      <span class="tag-pill">Regulatory analysis</span>
+      <span class="tag-pill">Policy research</span>
+      <span class="tag-pill">Compliance advisory</span>
+      <span class="tag-pill">AI governance &amp; literacy</span>
+      <span class="tag-pill">Stakeholder engagement</span>
+    </div>
+  </div>
+
+  <div class="skills-col">
+    <h3>Technical</h3>
+    <div class="tag-row">
+      <span class="tag-pill">Python (basic)</span>
+      <span class="tag-pill">R Studio</span>
+      <span class="tag-pill">SQL</span>
+      <span class="tag-pill">Data analysis</span>
+      <span class="tag-pill">WordPress</span>
+      <span class="tag-pill">Canva · iMovie</span>
+      <span class="tag-pill">Prompt engineering</span>
+      <span class="tag-pill">Microsoft Office</span>
+    </div>
+  </div>
+
+  <div class="skills-col">
+    <h3>Communication</h3>
+    <div class="tag-row">
+      <span class="tag-pill">Event planning</span>
+      <span class="tag-pill">Stakeholder coordination</span>
+      <span class="tag-pill">Translation</span>
+      <span class="tag-pill">Social media management</span>
+      <span class="tag-pill">Digital content creation</span>
+    </div>
+  </div>
+
+  <div class="skills-col">
+    <h3>Languages</h3>
+    <!-- EDIT: confirm exact CEFR levels -->
+    <div class="lang-list">
+      <div class="lang-row"><span class="lang-name">Polish</span><span class="lang-level">Native</span></div>
+      <div class="lang-row"><span class="lang-name">English</span><span class="lang-level">C2</span></div>
+      <div class="lang-row"><span class="lang-name">French</span><span class="lang-level">C1</span></div>
+      <div class="lang-row"><span class="lang-name">Spanish</span><span class="lang-level">B1</span></div>
+    </div>
+  </div>
+
+</div>
+  </section>
+
+  <section id="contact">
+    <div class="rule"></div>
+    <h2>Contact</h2>
+    <div class="contact-block">
+      <p><!-- EDIT: a short closing line --> Open to conversations on AI governance, regulatory research, and policy work in Paris or remotely.</p>
+      <div class="links">
+        <!-- EDIT: replace with your real links -->
+        <a href="mailto:martyna.chmura@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/martyna-chmura/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://drive.google.com/file/d/1QUSdD36tA_VZfA6ZKDXggEV9P8rvbpap/view?usp=sharing" target="_blank" rel="noopener">CV (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <!-- EDIT: year / name -->
+  © 2026 Martyna Chmura 
+</footer>
+
+</body>
+</html>
